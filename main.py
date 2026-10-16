@@ -1,7 +1,16 @@
-name = input("hello, pleaze enter your name: ")
+name = input("Hello, please enter your name: ")
 
-print(f"welcome {name} to the personal_book_manager")
+book_list = []
 
-book_name = input("plaeze enter your favorite book name: ")
+print(f"Welcome {name} to the Personal Book Manager!")
 
-print(f"ohh {name} your favorite book is {book_name}")
+count = int(input("How many books do you want to add? : "))
+
+for i in range(count):
+    book = input("Enter a book name: ")
+    book_list.append(book)
+
+print(f"\n{name}, your favorite books are:")
+
+for book in book_list:
+    print(book)
