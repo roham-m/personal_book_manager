@@ -2,12 +2,19 @@ import json
 
 def show_book(book_list):
     for book in book_list:
-        print(book)
+        print(f"Book: {book['name']} | Priority: {book['priority']}")
 
 def load_book():
     try:
         with open("books.json", "r") as file:
-            return json.load(file)
+            books = json.load(file)
+
+            for book in books:
+                if isinstance(book, str):
+                    return []
+
+            return books
+
     except (FileNotFoundError, json.JSONDecodeError):
         return []
 
