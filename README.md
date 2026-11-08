@@ -4,17 +4,18 @@
 
 ## Description
 
-Personal Book Manager is a simple book management program built with Python. It allows users to add multiple books, display their book lists, save their books in a JSON file, and access them again later. It also includes an Admin Mode with password protection.
+Personal Book Manager is a simple book management program built with Python. It allows users to add multiple books, assign priorities, display their book lists, save books in a JSON file, and load them again later. It also includes an Admin Mode with password protection.
 
 ## Table of Contents
 
 - [Features](#features)
-- [How It Works](#how-it-works)
+- [Book Priority](#book-priority)
 - [Requirements](#requirements)
 - [Project Structure](#project-structure)
 - [Installation](#installation)
 - [Environment Setup](#environment-setup)
 - [Run the Program](#run-the-program)
+- [Screenshot / Demo](#screenshot--demo)
 - [Usage](#usage)
 - [Troubleshooting](#troubleshooting)
 - [Author](#author)
@@ -22,24 +23,23 @@ Personal Book Manager is a simple book management program built with Python. It 
 ## Features
 
 - Add multiple books.
-- Display all saved books.
+- Assign a priority to each book.
+- Display all saved books with their priorities.
+- Validate book priorities.
 - Save books in a JSON file.
 - Load previously saved books.
 - Keep old books when adding new books.
 - Admin Mode with password protection.
 
-## How It Works
+## Book Priority
 
-1. The program starts by asking the user for their name.
-2. It loads previously saved books from `books.json`.
-3. The program welcomes the user to the Personal Book Manager.
-4. The user can choose whether to enter Admin Mode.
-5. If the user chooses Admin Mode, the program asks for an admin password.
-6. If the password is correct, Admin Mode is activated. Otherwise, an error message is displayed.
-7. The user chooses how many new books they want to add.
-8. The program asks for the name of each book and adds it to the book list.
-9. All books, including previously saved books and new books, are displayed.
-10. The complete book list is saved in `books.json` for future use.
+Each book can have one of three priority levels:
+
+- `low` - Low priority.
+- `medium` - Medium priority.
+- `high` - High priority.
+
+The program checks the entered priority. If the value is invalid, it asks the user to enter it again.
 
 ## Requirements
 
@@ -50,15 +50,15 @@ Personal Book Manager is a simple book management program built with Python. It 
 
 ## Project Structure
 
-```text id="4v7p2h"
+```text
 Personal_Book_Manager/
 │
 ├── main.py             # Main file that runs the program
 ├── books.py            # Contains functions for managing books
-├── books.json          # Stores all saved books
+├── books.json          # Stores books and their priorities
 ├── requirements.txt    # Contains required Python packages
-├── .env.example        # Template for required environment variables
-├── .gitignore          # Prevents sensitive and unnecessary files from being uploaded
+├── .env.example        # Template for environment variables
+├── .gitignore          # Prevents sensitive files from being uploaded
 ├── images/             # Stores project screenshots and images
 └── README.md           # Project documentation
 ```
@@ -67,35 +67,29 @@ Personal_Book_Manager/
 
 First, clone the repository:
 
-```bash id="k8p2jd"
+```bash
 git clone YOUR_REPOSITORY_LINK
 ```
 
 Open the project folder:
 
-```bash id="j4m8qp"
+```bash
 cd Personal_Book_Manager
 ```
 
-Install the required packages using `requirements.txt`:
+Install the required packages:
 
-```bash id="p2n6wt"
+```bash
 pip install -r requirements.txt
 ```
 
 ## Environment Setup
 
 1. Create a file named `.env` inside the project folder.
-2. The `.env.example` file is only a template.
-3. Open `.env.example` to see which Environment Variable is required.
+2. Open `.env.example` to see the required environment variable.
+3. Add the following content to your `.env` file:
 
-The required variable is:
-
-`admin_pass`
-
-Add the following content to your `.env` file:
-
-```env id="r7m3vx"
+```env
 admin_pass=your_password_here
 ```
 
@@ -109,13 +103,15 @@ Replace `your_password_here` with your own password.
 
 ## Run the Program
 
-The main file of this project is `main.py`.
+Run the main file using:
 
-Run the program using:
-
-```bash id="z5q9nb"
+```bash
 python main.py
 ```
+
+## Screenshot / Demo
+
+![personal_task_manager_screenshot](sc.png)
 
 ## Usage
 
@@ -123,10 +119,12 @@ python main.py
 2. Choose whether to enter Admin Mode.
 3. Enter the admin password if requested.
 4. Choose how many books you want to add.
-5. Enter the names of your books.
-6. View your saved books.
+5. Enter each book's name.
+6. Enter a priority: `low`, `medium`, or `high`.
+7. If the priority is invalid, enter it again.
+8. View all saved books and their priorities.
 
-All books are stored in `books.json` and loaded again when you run the program.
+All books are saved in `books.json` and loaded again when the program runs.
 
 ## Troubleshooting
 
@@ -134,65 +132,4 @@ All books are stored in `books.json` and loaded again when you run the program.
 
 **What does it mean?**
 
-Python cannot find the file it is trying to open.
-
-**Why can it happen?**
-
-The `books.json` file may not exist, or the program may be running from the wrong folder.
-
-**What should I check first?**
-
-Make sure you are running `main.py` from the project folder and check the file path.
-
-### 2. JSONDecodeError
-
-**What does it mean?**
-
-Python cannot read the data inside `books.json`.
-
-**Why can it happen?**
-
-The JSON file may be empty or contain incorrect data.
-
-**What should I check first?**
-
-Open `books.json` and check whether its contents are valid JSON. For an empty book list, use `[]`.
-
-### 3. ModuleNotFoundError: No module named 'dotenv'
-
-**What does it mean?**
-
-Python cannot find the `python-dotenv` package.
-
-**Why can it happen?**
-
-The package may not be installed in your Python environment.
-
-**What should I check first?**
-
-Run the following command in your terminal:
-
-```bash id="m8v2kc"
-pip install -r requirements.txt
-```
-
-### 4. Admin Password Not Working
-
-**What does it mean?**
-
-The program does not recognize the admin password.
-
-**Why can it happen?**
-
-The `.env` file may be missing, the password may be incorrect, or `load_dotenv()` may not have been called.
-
-**What should I check first?**
-
-- Make sure `.env` exists in the project folder.
-- Check that the variable name is exactly `admin_pass`.
-- Make sure `load_dotenv()` runs before `os.getenv("admin_pass")`.
-- Check that the password in `.env` is correct.
-
-## Author
-
-Roham Mirzaei
+Python cannot
