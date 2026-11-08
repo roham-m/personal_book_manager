@@ -8,9 +8,12 @@ name = input("Hello, please enter your name: ")
 
 book_list = load_book()
 
+if book_list is None:
+    book_list = []
+
 print(f"Welcome {name} to the Personal Book Manager!")
 
-admin_mode = input("Do you want to enter admin mode (yes/no)? ")
+admin_mode = input("Do you want to enter admin mode (yes/no)? ").lower()
 
 if admin_mode == "yes":
     admin_password = input("Enter admin password: ")
