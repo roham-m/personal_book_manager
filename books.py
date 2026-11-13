@@ -8,6 +8,9 @@ def show_book(book_list):
         print(f"Priority: {book['priority']}")
         print("----------------------")
 
+    print(f"Total number of books saved: {len(book_list)}")
+    print("----------------------")
+
 def load_book():
     try:
         with open("books.json", "r") as file:
