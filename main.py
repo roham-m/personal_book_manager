@@ -11,7 +11,7 @@ book_list = load_book()
 if book_list is None:
     book_list = []
 
-print(f"Welcome {name} to the Personal Book Manager!")
+print(f"\nWelcome, {name}! Your personal library starts here.")
 
 admin_mode = input("Do you want to enter admin mode (yes/no)? ").lower()
 

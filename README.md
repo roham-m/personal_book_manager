@@ -1,4 +1,4 @@
-# Personal Book Manager
+# Personal_Book_Manager
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white)
 
@@ -109,7 +109,8 @@ Run the main file using:
 python main.py
 ```
 
-## Screenshot / Demo
+## Screenshot /
+ Demo
 
 ![personal_task_manager_screenshot](sc.png)
 
