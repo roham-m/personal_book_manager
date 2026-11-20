@@ -41,5 +41,7 @@ for i in range(count):
         "priority": priority
     })
 
+    print(f"Book {book} added successfully")
+
 show_book(book_list)
 save_book(book_list)
